@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "yourdockerhubusername/devops-backend"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/yourusername/devops-end-to-end-project.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $DOCKER_IMAGE:latest ./app/backend'
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'DOCKER_PASS')]) {
+                    sh 'echo $DOCKER_PASS | docker login -u yourdockerhubusername --password-stdin'
+                    sh 'docker push $DOCKER_IMAGE:latest'
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f k8s/'
+            }
+        }
+    }
+}

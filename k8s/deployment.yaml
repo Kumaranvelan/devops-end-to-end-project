@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: devops-project
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: devops-backend:latest
+          portrs:
+            - containerPort: 5000
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyReg:
+                  name: mongo-secret
+                  key: mongo-uri 
