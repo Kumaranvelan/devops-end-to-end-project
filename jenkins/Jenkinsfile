@@ -60,7 +60,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Deployment Successfull da kumaraa!"
+            echo "✅ Deployment Successfull da kumaraaaaa!"
             echo "Image Deployed: $IMAGE_NAME:$IMAGE_TAG"
         }
         failure {
