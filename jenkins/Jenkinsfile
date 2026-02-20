@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "johnvelan/devops-backend"   // 🔁 Your DockerHub repo
+        IMAGE_NAME = "johnvelan/devops-backend"   
         IMAGE_TAG  = "${env.BUILD_NUMBER}"
         DEPLOYMENT_NAME = "backend-deployment"
         CONTAINER_NAME  = "backend"
@@ -59,7 +59,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Deployment Successful!"
+            echo "✅ Deployment Successfull da kumara!"
             echo "Image Deployed: $IMAGE_NAME:$IMAGE_TAG"
         }
         failure {
