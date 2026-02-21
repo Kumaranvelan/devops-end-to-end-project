@@ -9,6 +9,8 @@ pipeline {
         NAMESPACE = "devops-project"
     }
 
+
+
     stages {
 
         // stage('Checkout Code') {
