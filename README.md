@@ -86,6 +86,7 @@ devops-end-to-end-project/
 - End-to-end CI/CD pipeline automation
 - AWS infrastructure best practices (ALB, Target Groups, Security Groups)
 
+
 ## Security Notes
 - IAM roles used instead of access keys
 - Secrets managed via Kubernetes Secrets
